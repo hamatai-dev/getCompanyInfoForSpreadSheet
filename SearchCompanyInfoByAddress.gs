@@ -1,10 +1,7 @@
-// Google Places APIキーを設定（Google Cloud Consoleで取得）
-const API_KEY = "Google Places APIキー";
-
 /**
  * 複数行を一括処理する関数
  */
-function main() {
+function searchCompanyInfoByAddress() {
   const sheet = SpreadsheetApp.getActiveSheet();
   const lastRow = sheet.getLastRow();
 
@@ -142,11 +139,11 @@ function getCompanyInfoByAddress(address) {
       if (bestPlace) {
         const companyName = bestPlace.displayName
           ? bestPlace.displayName.text
-          : "";
+          : "検索結果なし";
         const phoneNumber =
           bestPlace.nationalPhoneNumber ||
           bestPlace.internationalPhoneNumber ||
-          "";
+          "検索結果なし";
 
         Logger.log("\n=== 選択した結果 ===");
         Logger.log("企業名: " + companyName);
@@ -155,11 +152,11 @@ function getCompanyInfoByAddress(address) {
 
         return [companyName, phoneNumber];
       } else {
-        return ["検索結果なし", ""];
+        return ["検索結果なし", "検索結果なし"];
       }
     } else {
       Logger.log("検索結果が0件でした");
-      return ["検索結果なし", ""];
+      return ["検索結果なし", "検索結果なし"];
     }
   } catch (error) {
     Logger.log("エラー: " + error.toString());
@@ -208,33 +205,13 @@ function calculateAddressMatch(searchAddress, resultAddress) {
 /**
  * デバック用のテスト関数 - 特定の住所で動作確認
  */
-function testAddress() {
-  const testAddress = "検索したい住所を指定";
+// function testAddress() {
+//   const testAddress = '福岡県福岡市南区高宮５丁目５−１３ 102号';
 
-  Logger.log("=== テスト開始 ===");
-  const result = getCompanyInfoByAddress(testAddress);
+//   Logger.log('=== テスト開始 ===');
+//   const result = getCompanyInfoByAddress(testAddress);
 
-  Logger.log("\n=== 最終結果 ===");
-  Logger.log("企業名: " + result[0]);
-  Logger.log("電話番号: " + result[1]);
-}
-
-/**
- * スプレッドシートで使用するカスタム関数
- * セルに「=COMPANY_INFO(A2)」のように入力して使用
- */
-function COMPANY_INFO(address) {
-  const info = getCompanyInfoByAddress(address);
-  return info[0] + " / " + info[1];
-}
-
-/**
- * メニューにカスタム関数を追加
- */
-function onOpen() {
-  const ui = SpreadsheetApp.getUi();
-  ui.createMenu("企業情報取得")
-    .addItem("住所から企業情報を取得", "main")
-    // .addItem('テスト実行', 'testAddress')
-    .addToUi();
-}
+//   Logger.log('\n=== 最終結果 ===');
+//   Logger.log('企業名: ' + result[0]);
+//   Logger.log('電話番号: ' + result[1]);
+// }
