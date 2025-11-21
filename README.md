@@ -92,6 +92,7 @@ This Google Apps Script tool reads address or company name information from Goog
 3. 以下のいずれかを選択：
    - 「住所から検索」→「会社名・電話番号を取得」
    - 「会社名から検索」→「住所・電話番号を取得」
+   - ※「【使用不可】電話番号から検索」は現在開発中のため利用できません
 4. 処理が完了するまで待つ
 
 ### English
@@ -126,6 +127,7 @@ This Google Apps Script tool reads address or company name information from Goog
 3. Select one of the following:
    - "住所から検索" (Search from address) → "会社名・電話番号を取得" (Get company name and phone number)
    - "会社名から検索" (Search from company name) → "住所・電話番号を取得" (Get address and phone number)
+   - ※ "【使用不可】電話番号から検索" (Search from phone number - NOT AVAILABLE) is currently under development and cannot be used
 4. Wait for processing to complete
 
 ---
@@ -209,9 +211,10 @@ This Google Apps Script tool reads address or company name information from Goog
 ##### `onOpen()`
 
 - スプレッドシート起動時に自動実行
-- カスタムメニューを追加（住所検索と会社名検索のサブメニュー付き）
+- カスタムメニューを追加（住所検索、会社名検索、電話番号検索のサブメニュー付き）
+- ※電話番号検索機能は現在開発中のため「【使用不可】」と表示されます
 
-### English
+### English (Function Descriptions)
 
 #### SearchCompanyInfoByAddress.gs
 
@@ -270,7 +273,8 @@ This Google Apps Script tool reads address or company name information from Goog
 ##### `onOpen()`
 
 - Automatically executed when spreadsheet is opened
-- Adds custom menu with submenus for address search and company name search
+- Adds custom menu with submenus for address search, company name search, and phone number search
+- ※ Phone number search feature is currently under development and marked as "【使用不可】" (NOT AVAILABLE)
 
 ---
 

@@ -17,5 +17,11 @@ function onOpen() {
         .createMenu("会社名から検索")
         .addItem("住所・電話番号を取得", "searchCompanyInfoByCompanyName")
     )
+    .addSeparator()
+    .addSubMenu(
+      ui
+        .createMenu("【使用不可】電話番号から検索")
+        .addItem("会社名・住所を取得", "searchCompanyInfoByPhoneNumber")
+    )
     .addToUi();
 }
